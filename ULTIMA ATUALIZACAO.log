@@ -1,0 +1,5 @@
+Possible issue encountered when converting Shape #5884 to GeoJSON: Shapefile format requires that polygons contain at least one exterior ring, but the Shape was entirely made up of interior holes (defined by counter-clockwise orientation in the shapefile format). The rings were still included but were encoded as GeoJSON exterior rings instead of holes.
+Aviso: 1 registros sem geometria não podem ser desenhados.
+Linhas do shapefile (contagem a partir de 1): 8842
+Arquivos gravados em: C:\Users\iagof\Downloads\planta-cadastral-parelhas\Mapa-Parelhas-Atualizacao-Corrigida\Mapa-Parelhas\data
+Concluído: 8843 lotes atualizados. Feche e abra index.html novamente.

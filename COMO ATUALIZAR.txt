@@ -1,0 +1,34 @@
+ATUALIZAR OS LOTES DO MAPA
+
+1. Extraia o ZIP antes de trabalhar com os arquivos.
+2. Na pasta shp_source, copie o conjunto atualizado: .shp, .shx, .dbf,
+   .prj e .cpg, todos com o mesmo nome. Deixe apenas um conjunto nessa pasta.
+3. Para a primeira atualização, instale Python 3.11 ou superior pelo
+   instalador oficial de python.org e marque a opção Add Python to PATH.
+   Abra um terminal nesta pasta e execute:
+
+   python -m pip install -r scripts/requirements.txt
+
+4. Dê dois cliques em ATUALIZAR MAPA.bat.
+5. Aguarde a mensagem Concluído. Feche e abra index.html novamente.
+
+Copiar o shapefile sozinho não atualiza o mapa: execute o passo 4.
+O atualizador gera data/lotes.geojson E data/lotes.js. Ambos devem acompanhar
+o mapa ao publicar ou compartilhar. Uma cópia dos dados anteriores fica em
+data/backups. Os shapefiles de entrada não são modificados.
+
+Campos esperados: rua, numero, numero2, bairro, nome, inconsiste.
+O campo numero é obrigatório. Os demais podem estar vazios ou ausentes.
+O .prj informa a projeção original, convertida para longitude/latitude.
+O .cpg informa a codificação dos textos. Exporte os dois junto com o shapefile.
+Não renomeie os campos ao exportar pelo QGIS.
+
+O pacote contém os lotes convertidos que já estavam no mapa. Os arquivos
+shapefile originais devem ser copiados por você para shp_source.
+
+CORREÇÃO DO ATUALIZADOR
+Registros sem geometria (NULL no shapefile) são ignorados no desenho e
+listados em data/ultima_atualizacao.json. Os registros com polígonos continuam
+sendo importados. Um shapefile inteiramente sem polígonos não substitui os dados.
+A data da atualização e o total de lotes aparecem no painel direito do mapa.
+O resultado da execução fica salvo em ULTIMA ATUALIZACAO.log.

@@ -1,0 +1,13 @@
+Copie aqui os arquivos .shp, .shx, .dbf, .prj e .cpg do seu cadastro.
+Todos devem ter o mesmo nome antes da extensão. Deixe apenas um conjunto.
+
+Exemplo:
+planta_cadastral_parelhas.shp
+planta_cadastral_parelhas.shx
+planta_cadastral_parelhas.dbf
+planta_cadastral_parelhas.prj
+planta_cadastral_parelhas.cpg
+
+Os shapefiles originais não estão incluídos neste pacote.
+O mapa abre com os 8.801 lotes já convertidos na pasta data.
+Depois de copiar seu shapefile, siga COMO ATUALIZAR.txt na pasta anterior.

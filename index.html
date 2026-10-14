@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planta Cadastral — Parelhas/RN</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="mapa" role="application" aria-label="Mapa da planta cadastral"></div>
+
+  <div class="rotulo-contexto">
+    <strong>Planta Cadastral</strong> — Parelhas/RN
+  </div>
+
+  <div class="painel-busca">
+    <div class="caixa-busca" id="caixaBusca">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input
+        type="text"
+        id="inputBusca"
+        placeholder="Buscar por rua, número ou bairro…"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Buscar endereço"
+      />
+      <button class="botao-limpar" id="botaoLimpar" aria-label="Limpar busca" type="button">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="resumo-busca" id="resumoBusca" hidden>
+      <span id="totalBusca" role="status" aria-live="polite"></span>
+      <button id="verTodosBusca" type="button">Ver todos no mapa</button>
+    </div>
+    <div class="lista-resultados" id="listaResultados" role="listbox" aria-label="Resultados da busca"></div>
+  </div>
+
+  <details class="painel-grupos" open>
+    <summary>Agrupar lotes</summary>
+    <div class="conteudo-grupos">
+      <p id="atualizacaoDados" class="ajuda-grupos" role="status">Carregando cadastro…</p>
+      <p id="escopoGrupos">Em todo o cadastro</p>
+      <p class="ajuda-grupos">Marque um ou mais grupos. Pesquise uma rua ou bairro para limitar a seleção a esse local.</p>
+      <label class="opcao-grupo"><input id="grupo-sem-numero" type="checkbox" disabled /><span>Sem número<small>Sem numeração identificada, incluindo s/n</small></span><strong id="contagem-sem-numero">—</strong></label>
+      <label class="opcao-grupo"><input id="grupo-com-numero" type="checkbox" disabled /><span>Com número<small>Numeração no campo principal ou complemento</small></span><strong id="contagem-com-numero">—</strong></label>
+      <label class="opcao-grupo"><input id="grupo-ausente" type="checkbox" disabled /><span>Números ausentes<small>Anotados como “ausente” no cadastro</small></span><strong id="contagem-ausente">—</strong></label>
+      <label class="opcao-grupo"><input id="grupo-vazio" type="checkbox" disabled /><span>Lotes vazios<small>Anotados como “lote vazio” no cadastro</small></span><strong id="contagem-vazio">—</strong></label>
+      <p id="totalGrupos" role="status" aria-live="polite">Carregando lotes…</p>
+      <div class="acoes-grupos"><button id="enquadrarGrupos" type="button" disabled>Ver grupo no mapa</button><button id="limparGrupos" type="button" disabled>Limpar grupos</button></div>
+      <label class="opcao-grupo"><input id="mostrarNumeros" type="checkbox" checked /><span>Mostrar números<small>Aproxime o mapa para ver os números dos lotes</small></span></label>
+      <label class="rotulo-mapa" for="mapaBase">Mapa de fundo</label>
+      <select id="mapaBase"><option value="google">Google Satélite</option><option value="esri">Esri Satélite</option></select>
+      <p id="avisoMapa" role="status" hidden></p>
+    </div>
+  </details>
+
+  <div class="legenda"><div class="item-legenda"><span class="amostra-lote"></span><span>Lotes · vermelho com contorno branco</span></div><div class="item-legenda"><span>Busca e grupos: preenchimento mais forte</span></div></div>
+
+  <aside class="painel-detalhes" id="painelDetalhes" aria-live="polite">
+    <button class="fechar" id="fecharDetalhes" aria-label="Fechar detalhes" type="button">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div id="conteudoDetalhes"></div>
+  </aside>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="vendor/fuse.min.js"></script>
+  <script src="data/lotes.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+

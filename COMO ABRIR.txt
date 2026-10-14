@@ -1,0 +1,36 @@
+MAPA DE PARELHAS
+
+COMO ABRIR
+1. Extraia o ZIP usando Extrair Tudo.
+2. Abra a pasta Mapa-Parelhas.
+3. Dê dois cliques em index.html.
+Mantenha os arquivos juntos. As imagens de satélite precisam de internet.
+
+APARÊNCIA
+Os lotes são vermelhos com contorno branco.
+Ao buscar ou agrupar, os lotes correspondentes ficam com vermelho mais forte.
+Os números ficam em preto com buffer branco e aparecem ao aproximar o mapa
+(nível de zoom 18 ou superior). O painel permite ligar/desligar Mostrar números.
+O rótulo usa numero; quando não há numeração nesse campo, usa numero2.
+Lotes sem numeração não recebem números inventados.
+
+BUSCA E GRUPOS
+Digite uma rua ou bairro para marcar todos os lotes correspondentes.
+No painel direito, combine os grupos Sem número, Com número, Números ausentes
+ou Lotes vazios. Uma busca por rua/bairro limita os grupos àquele local.
+Clique em um lote para ver detalhes. Ver grupo no mapa enquadra o conjunto.
+Limpar grupos remove o agrupamento. Limpar a busca volta ao cadastro inteiro.
+No celular, toque no título Agrupar lotes para recolher o painel.
+
+ATUALIZAR O SHAPEFILE
+A pasta shp_source está incluída neste ZIP. Copie nela seus arquivos
+.shp, .shx, .dbf, .prj e .cpg. Todos devem ter o mesmo nome antes da extensão.
+Os shapefiles originais não estão incluídos: o pacote contém os dados do mapa
+já convertidos. Copie seus originais para a pasta e siga COMO ATUALIZAR.txt.
+Após preparar Python e as dependências, use ATUALIZAR MAPA.bat.
+Copiar os arquivos sozinho não atualiza a página; execute o atualizador.
+
+MAPA DE FUNDO
+Google Satélite é o fundo inicial. Se necessário, selecione Esri Satélite.
+O acesso Google é o endereço direto utilizado pelo HCMGIS, não a API oficial;
+sua disponibilidade pode mudar.
